@@ -27,13 +27,20 @@ itemMAPP = extractedText[3]
 itemRMAP1 = extractedText[4]
 itemRMAP2 = extractedText[5]
 
+#remove \n
+itemName = itemName.replace("\n", "")
+itemDesc = itemDesc.replace("\n","")
+itemMAPP = itemMAPP.replace("\n","")
+itemRMAP1 = itemRMAP1.replace("\n","")
+itemRMAP2 = itemRMAP2.replace("\n","")
+
 # print variables
-# print("item Number: " + itemNumber + " item Name: " + itemName + " item Desc: " + itemDesc + " item MAPP: " + itemMAPP + " item RMAPP1: " + itemRMAP1 + "item RMAPP2: " + itemRMAP2)
+print("item Number: " + itemNumber)
 print("item Name: " + itemName)
 print("item Desc: " + itemDesc)
 print("item MAPP: " + itemMAPP)
 print("item RMAPP1: " + itemRMAP1)
 print("item RMAPP2: " + itemRMAP2)
-print(extractedText)
+
 # closing the pdf file object 
 pdfFileObj.close()
