@@ -49,35 +49,23 @@ for x in range(0, int(configs)):
   itemRMAP1 = itemRMAP1.replace("\n","")
   itemRMAP2 = itemRMAP2.replace("\n","")
   itemMSRP = itemMSRP.replace("\n","")
-  # print("Product Number: " + itemNumber)
-  # print("Name: " + itemName)
-  # print("Description: " + itemDesc)
-  # print("MAPP: " + itemMAPP)
-  # print("RMAPP1: " + itemRMAP1)
-  # print("RMAPP2: " + itemRMAP2)
-  # print("MSRP: " + itemMSRP)
+  #assign data to cells
+  itemNumberCell = "A" + str(x+1)
+  itemNameCell = "B" + str(x+1)
+  itemDescCell = "C" + str(x+1)
+  itemMAPPCell = "D" + str(x+1)
+  itemRMAP1Cell = "E" + str(x+1)
+  itemRMAP2Cell = "F" + str(x+1)
+  itemMSRPCell = "G" + str(x+1)
+  #insert data
+  ws[itemNumberCell] = itemNumber
+  ws[itemNameCell] = itemName
+  ws[itemDescCell] = itemDesc
+  ws[itemMAPPCell] = itemMAPP
+  ws[itemRMAP1Cell] = itemRMAP1
+  ws[itemRMAP2Cell] = itemRMAP2
+  ws[itemMSRPCell] = itemMSRP
+  #save
+  wb.save('sample.xlsx')
+  #advance pointer
   configPointer =  configPointer + 7
-
-
-#assign data to cells
-ws['A1'] = itemNumber
-wb.save('sample.xlsx')
-
-ws.append([1,2,3])
-# closing the pdf file object 
-# pdfFileObj.close()
-
-# row = [itemNumber, itemName]
-
-# csvFile = open('newMFP.csv', 'w')
-# try:
-#   writer = csv.writer(csvFile)
-#   writer.writerows(row)
-# finally:
-#   csvFile.close()    
-
-
-#attach model-specific accessories
-
-
-#attach global accessories to each model as appropriate
