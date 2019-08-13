@@ -16,7 +16,7 @@ pageObj = pdfReader.getPage(0)
 # extracting text from page 
 extractedText = pageObj.extractText()
 
-# split text at whitespace
+# split text at newline
 extractedText = extractedText.split(' \n ')
 
 #Item Data
@@ -26,6 +26,7 @@ itemDesc = extractedText[2]
 itemMAPP = extractedText[3]
 itemRMAP1 = extractedText[4]
 itemRMAP2 = extractedText[5]
+#itemMSRP = extractedText[6]
 
 #remove \n
 itemName = itemName.replace("\n", "")
@@ -33,6 +34,7 @@ itemDesc = itemDesc.replace("\n","")
 itemMAPP = itemMAPP.replace("\n","")
 itemRMAP1 = itemRMAP1.replace("\n","")
 itemRMAP2 = itemRMAP2.replace("\n","")
+#itemMSRP = itemMSRP.replace("\n","")
 
 # print variables
 print("item Number: " + itemNumber)
@@ -41,6 +43,8 @@ print("item Desc: " + itemDesc)
 print("item MAPP: " + itemMAPP)
 print("item RMAPP1: " + itemRMAP1)
 print("item RMAPP2: " + itemRMAP2)
+#print("item MSRP: " + itemMSRP)
+#print(extractedText)
 
 # closing the pdf file object 
 pdfFileObj.close()
