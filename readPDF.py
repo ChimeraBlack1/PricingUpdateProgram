@@ -1,14 +1,22 @@
 # importing required modules 
 import PyPDF2 
+import csv
+from openpyxl import Workbook
+
+#create workbook object
+wb = Workbook()
+
+#grab active worksheet
+ws = wb.active
+
+#set PDF source to read from
+sourceDoc = '2machineTest.pdf'
 
 # creating a pdf file object in read binary mode
-pdfFileObj = open('2machineTest.pdf', 'rb') 
+pdfFileObj = open(sourceDoc, 'rb') 
 
 # creating a pdf reader object 
 pdfReader = PyPDF2.PdfFileReader(pdfFileObj) 
-
-# printing number of pages in pdf file 
-# print(pdfReader.numPages) 
 
 # creating a page object 
 pageObj = pdfReader.getPage(0) 
@@ -26,7 +34,6 @@ configs = len(extractedText) / 7
 configPointer = 0
 
 for x in range(0, int(configs)):
-  #print("x is:" + str(x))
   print(" ")
   print("Config " + str(x + 1) + " ...")
   itemNumber = extractedText[configPointer + 0]
@@ -42,15 +49,35 @@ for x in range(0, int(configs)):
   itemRMAP1 = itemRMAP1.replace("\n","")
   itemRMAP2 = itemRMAP2.replace("\n","")
   itemMSRP = itemMSRP.replace("\n","")
-  print("item Number: " + itemNumber)
-  print("item Name: " + itemName)
-  print("item Desc: " + itemDesc)
-  print("item MAPP: " + itemMAPP)
-  print("item RMAPP1: " + itemRMAP1)
-  print("item RMAPP2: " + itemRMAP2)
-  print("item MSRP: " + itemMSRP)
+  # print("Product Number: " + itemNumber)
+  # print("Name: " + itemName)
+  # print("Description: " + itemDesc)
+  # print("MAPP: " + itemMAPP)
+  # print("RMAPP1: " + itemRMAP1)
+  # print("RMAPP2: " + itemRMAP2)
+  # print("MSRP: " + itemMSRP)
   configPointer =  configPointer + 7
 
 
+#assign data to cells
+ws['A1'] = itemNumber
+wb.save('sample.xlsx')
+
+ws.append([1,2,3])
 # closing the pdf file object 
-pdfFileObj.close()
+# pdfFileObj.close()
+
+# row = [itemNumber, itemName]
+
+# csvFile = open('newMFP.csv', 'w')
+# try:
+#   writer = csv.writer(csvFile)
+#   writer.writerows(row)
+# finally:
+#   csvFile.close()    
+
+
+#attach model-specific accessories
+
+
+#attach global accessories to each model as appropriate
